@@ -1,2 +1,6 @@
-# wedding
-My Wedding Website
+# Wedding Website Framework
+* AngularJS 1.6.9
+
+This is a minimalistic, extensible personal website framework that I developed for my personal use.
+
+

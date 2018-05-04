@@ -1,0 +1,39 @@
+html {font-family: 'Ruda'; font-size: 30px; }
+html, body {height: 100%; }
+
+.clickable {cursor: pointer; }
+.hidden {display: none;}
+.visible {display: initial;}
+
+.title_splash {background-image: url('images/title_splash.jpg'); display: flex; flex-direction: column; align-items: center; height: 25%; justify-content: center; background-repeat: no-repeat; background-size: 100%;  }
+.title_splash_title_text {font-size: 2em; color: #fff; text-shadow: 0.01em 0.05em #000;}
+.title_splash_subtitle {font-size: 1.7em; color: #fff; text-shadow: 0.01em 0.05em #000;}
+
+.nav_bar {display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-between; border-bottom: 0.2em solid #000; }
+.nav_button {font-size: 1.1em; padding: 2%; color: #666; background-color: #ccc; margin: 1%; margin-bottom: 0; border-top-left-radius: 10px; border-top-right-radius: 10px; }
+.nav_button.active {background-color: #fff; border: 0.2em solid #000; border-bottom: 0; margin-bottom: -0.9%; color: #000; font-weight: bold; }
+
+.tab {width: 95%; margin: 0 auto; }
+
+.footer {position: absolute; bottom: 1%; left: 1%; right: 1%; display: flex; flex-direction: row; justify-content: space-between; font-size: 0.6em; }
+
+
+/* tablet breakpoint */
+@media only screen and (min-width: 700px) and (max-resolution: 3dppx) {
+    html {font-size: 20px; }
+    .title_splash {height: 30%; }
+    .nav_button {margin-bottom: 0.1%; }
+    .nav_button.active {margin-bottom: -0.5%; }
+    .footer {font-size: 0.7em; }
+}
+
+
+
+/* wide res desktop breakpoint */
+
+@media only screen and (min-width: 1050px) and (orientation: landscape) {
+    html {font-size: 10pt; }
+    body {width: 700px; margin: 0 auto;  }
+    .nav_button.active {margin-bottom: -0.4%; }
+    .footer {left: 15%; right: 15%; }
+}

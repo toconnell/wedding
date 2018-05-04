@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+    <!-- angularjs app import, followed by JSON imports -->
+    <script src="app.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Ruda" rel="stylesheet">
+
+    <!-- body starts -->
+    <body ng-app="weddingApp" ng-controller="bodyController">
+
+        <div class="title_splash">
+            <div class="title_splash_title_text">
+                Timothy & Charlotte
+        </div>
+            <div class="title_splash_subtitle">
+                August 4, 2018
+            </div>
+        </div>
+
+        <div class="nav_bar">
+            <div
+                class="clickable nav_button"
+                ng-repeat="tab in tabs"
+                ng-click="setActiveTab(tab.id)"
+                ng-class="{active: scratch.activeTab === tab.id}"
+            >
+                {{tab.title}}
+            </div>
+        </div>
+
+        <div
+            id="infoTab"
+            class="tab"
+            ng-repeat="tab in tabs"
+            ng-if="scratch.activeTab === tab.id"
+        >
+            <h1>{{tab.title}}</h1>
+            <h2>{{tab.subtitle}}</h2>
+            <span ng-bind-html="tab.body|trustedHTML"></span>
+        </div>
+
+
+        <div class="footer">
+            <a href="http://toconnell.info" target="top">
+                <div>design: "22"</div>
+            </a>
+            <a href="https://github.com/toconnell/wedding" target="top">
+                <div>source code on github</div>
+            </a>
+        </div>
+    </body>
+</html>
