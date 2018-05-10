@@ -38,10 +38,11 @@
             class="tab"
             ng-repeat="tab in tabs"
             ng-if="scratch.activeTab === tab.id"
+			ng-init="getStub()"
         >
             <h1>{{tab.title}}</h1>
             <h2>{{tab.subtitle}}</h2>
-            <span ng-bind-html="tab.body|trustedHTML"></span>
+			<div ng-include="'html/' + tab.id + '.html'"></div>
         </div>
 
 
