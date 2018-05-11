@@ -8,29 +8,43 @@ p {font-size: 0.9em; }
 .hidden {display: none;}
 .visible {display: initial;}
 
+
 .title_splash {display: flex; flex-direction: column; align-items: center; height: 25%; justify-content: center; background-repeat: no-repeat; background-size: 100%;  font-family: 'Poiret One'; position: relative; }
 .title_splash::after {  content: "";  background: url('/media/title_splash.jpg');  opacity: 0.5;  top: 0;  left: 0;  bottom: 0;  right: 0;  position: absolute;  z-index: -1; 	background-repeat: no-repeat; 	background-size: 100%;	background-height: inherit;  }
 .title_splash_title_text {font-size: 2.5em; color: #fff; text-shadow: 0.01em 0.05em #000; font-weight: bold; text-transform: uppercase; }
 .title_splash_subtitle {font-size: 2em; color: #fff; text-shadow: 0.01em 0.05em #000; font-weight: bold; text-transform: uppercase; }
 
-.nav_bar {display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-between; background: linear-gradient(to bottom, #fff 91%, #000); }
-.nav_button {font-size: 1.1em; padding: 2%; color: #666; background-color: #ddd; margin: 1%; margin-bottom: 0; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom: 0.2em solid #777; font-family: 'Poiret One'; text-transform: uppercase; }
-.nav_button.active {background-color: #fff; border: 0.2em solid #000; border-bottom: 0; margin-bottom: 0; color: #000; font-weight: bold; margin-bottom: -2px; }
+.nav_bar {display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-between; background: linear-gradient(to bottom, #fff 90%, #000); }
+.nav_button {font-size: 1.1em; padding: 2%; color: #666; background-color: #ddd; margin: 1%; margin-bottom: 0; border-top-left-radius: 10px; border-top-right-radius: 10px; font-family: 'Poiret One'; text-transform: uppercase; background: linear-gradient(to bottom, #ddd 90%, #000); border-top: 0.2em solid #ddd; }
+.nav_button.active {background: none; background-color: #fff; border: 0.2em solid #000; border-bottom: 0; margin-bottom: 0; color: #000; font-weight: bold; margin-bottom: -2px; transition: 0.5s; }
 
 .tab {width: 95%; margin: 0 auto; padding-bottom: 10%; }
 
 .footer {position: fixed; bottom: 0; left: 0; right: 0; display: flex; flex-direction: row; justify-content: space-between; font-size: 0.6em; background: linear-gradient(to bottom, #eee 10%, #fff); padding: 1%; border-top: 1px solid #ddd; }
 
-.rsvp_form_container {width: 95%; background-color: #eee; min-height: 50%; display: flex; flex-direction: column; flex-wrap: nowrap;  margin: 0 auto;  }
+.rsvp_form_container {width: 95%; background-color: #efefef; min-height: 50%; display: flex; flex-direction: column; flex-wrap: nowrap;  margin: 0 auto;  }
 .rsvp_form_sheet {transition: 1s; }
-.rsvp_form_sheet p {margin: 2%; }
-.rsvp_form_sheet p input {font-size: 1em; }
+.rsvp_form_sheet p {margin: 2%; margin-bottom: 5%; }
+.rsvp_form_sheet h2 {margin-left: 5%; font-family: 'Poiret One'; text-transform: uppercase; }
+.rsvp_form_sheet input[type="number"] {width: auto; }
+.rsvp_form_sheet input[type="radio"] { display: none; }
+.rsvp_form_sheet label {padding: 2%; background-color: #ccc; color: #fff; transition: 0.5s; border-radius: 5px; font-size: 0.9em; margin: 1%; text-transform: capitalize; }
+.rsvp_form_sheet input[type="radio"]:checked+label {color: #000; background-color: #BA8D3C; font-weight: bold; }
+.rsvp_form_nav {font-size: 1em; margin: 1%; border: 0; padding: 2%; background-color: #eea; background: radial-gradient(#01BAB4,#05A49F); }
 .rsvp_form_nav_container {display: flex; flex-direction: row; justify-content: flex-end; padding: 3%; }
-.rsvp_form_nav_container button {font-size: 1em; margin: 1%; }
 .rsvp_form_step_container {width: auto; margin: 0 auto; padding: 3%; }
 .step {  height: 1em;  width: 1em;  margin: 0 0.5em;  background-color: #bbbbbb;  border: none;   border-radius: 50%;  display: inline-block;  opacity: 0.5;}
 .step.active {background-color: #666;}
 
+.rsvp_guest_name,
+	.rsvp_guest_email {font-size: 1.5em; text-align: center; width: 90%; border: 0; text-align: left; padding: 1%; padding-left: 3%; margin: 2%; font-family: 'Poiret One'; font-weight: bold; }
+
+.rsvp_guest {display: block; margin: 2%; border-radius: 5px; background-color: #fff; padding: 1%; }
+.guest_list_review {width: 95%; background-color: #fff; border-radius: 5px; border: 1px solid #ccc; margin: 0 auto; border-collapse: collapse;}
+.guest_list_review th {border-bottom: 1px solid #333; padding: 1%; }
+.guest_list_review td {border-left: 1px solid #999; padding: 1%; text-transform: capitalize;}
+.rsvp_error {background-color: #FF9999; padding: 1%; border: 1px solid #fff;}
+.rsvp_submit {font-weight: bold; }
 
 /* content */
 iframe {max-height: 200vh; width: 90%; display: block; margin: 0 auto; }
@@ -57,3 +71,12 @@ iframe {max-height: 200vh; width: 90%; display: block; margin: 0 auto; }
 	.nav_button.active {margin-bottom: 0; }
 	.bottom_spacer {height: 50px; }
 }
+
+
+/* last chance styles and overrides only below */
+
+/* color */
+.gradient_gold {background: radial-gradient(#F5E5B2, #E7CC7D, #BA8D3C);}
+
+
+

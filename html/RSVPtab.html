@@ -9,45 +9,106 @@
 >
 
 	<div class="rsvp_form_sheet">
-		<p class="rsvp_question">
-			Number of Adults: <input type="number" ng-model="rsvpForm.adultsCount" required></input>
-		</p>
-		<p class="rsvp_question">
-			Children under 12: <input type="number" ng-model="rsvpForm.childrenCount" required></input>
-		</p>
-	</div>
-	<div class="rsvp_form_sheet">
-		<div class="attendee_form_container" ng-repeat="a in range(rsvpForm.adultsCount)">
-			adult {{a}}|{{$index}}
+		<h2>Guests</h2>
+		<div class="rsvp_guest" ng-repeat="guest in guestList">
+			<p class="rsvp_question"><input class="rsvp_guest_name" ng-model="guest.name" placeholder="Guest Name" required/></p>
+
+			<p class="rsvp_question" ng-init="typeOptions = ['adult','under 12']">
+				<span ng-repeat="option in typeOptions">
+					<input
+						id="guest_{{guest.id}}_type_{{option}}"
+						type="radio"
+						name="guest_{{guest.id}}_type"
+						ng-model="guest.type"
+						value="{{option}}"
+					/>
+					<label
+						for="guest_{{guest.id}}_type_{{option}}"
+						class="clickable"
+						ng-class="{gradient_gold: guest.type === option}"
+					>
+						{{option}}
+					</label>
+				</span>
+			</p>
+			<p class="rsvp_question" ng-init="mealOptions = ['chicken','beef','vegetarian']">
+				<span ng-repeat="option in mealOptions">
+					<input
+						id="guest_{{guest.id}}_meal_{{option}}"
+						type="radio"
+						name="guest_{{guest.id}}_meal"
+						ng-model="guest.meal"
+						value="{{option}}"
+					/>
+					<label
+						for="guest_{{guest.id}}_meal_{{option}}"
+						class="clickable"
+						ng-class="{
+							hidden: option == 'vegetarian' && guest.type == 'under 12',
+							gradient_gold: guest.meal === option
+						}"
+					>
+						{{option}}
+					</label>
+				</span>
+			</p>
 		</div>
 	</div>
+
+
 	<div class="rsvp_form_sheet">
-		<p class="rsvp_question">
-			sheet 3: confirm and submit
+		<h2>Confirmation</h2>
+		<table class="guest_list_review">
+			<tr><th>Guest</th><th>Type</th><th>Meal</th></tr>
+			<tr ng-repeat="guest in guestList">
+				<td style="border:none;">{{guest.name}}</td>
+				<td>{{guest.type}}</td>
+				<td>{{guest.meal}}</td>
+			</tr>
+		</table>
+		<p class="rsvp_error" ng-if="scratch.submitDisabled">
+			Please return to the previous sheet and complete all fields before submitting your RSVP!
+		</p>
+		<p class="rsvp_question" ng-if="scratch.submitDisabled === false">
+			(Optional) Send a confirmation email to this address:
+			<input class="rsvp_guest_email" type="email" ng-model="scratch.confirmationEmail" placeholder="email" />
 		</p>
 	</div>
 
+
+	<!-- nav buttons -->
 	<div class="rsvp_form_nav_container">
+		<button
+			ng-if="scratch.currentSheet === 0"
+			ng-click="addGuest()"
+			class="rsvp_form_nav"
+		>
+			+ Add Guest
+		</button>
+	    <button
+			ng-if="scratch.currentSheet < scratch.sheets.length - 1 && guestList.length > 0"
+			ng-click="showSheet(scratch.currentSheet + 1); validateRSVP()"
+			class="rsvp_form_nav"
+		>
+			Next
+		</button>
 		<button
 			ng-if="scratch.currentSheet > 0"
 			ng-click="showSheet(scratch.currentSheet - 1)"
+			class="rsvp_form_nav"
 		>
 			Previous
 		</button>
 	    <button
-			ng-if="scratch.currentSheet < scratch.sheets.length - 1"
-			ng-click="showSheet(scratch.currentSheet + 1)"
-		>
-			Next
-		</button>
-	    <button
-			ng-if="scratch.currentSheet === scratch.sheets.length - 1"
+			ng-if="scratch.currentSheet === scratch.sheets.length - 1 && scratch.submitDisabled === false"
 			ng-click="submitSheet"
+			class="rsvp_submit rsvp_form_nav gradient_gold"
 		>
 			Submit
 		</button>
     </div>
 
+	<!-- step container -->
 	<div class="rsvp_form_step_container">
 		<span
 			class="step"
@@ -55,9 +116,6 @@
 			ng-class="{active: scratch.currentSheet == $index}"
 		></span>
 	</div>
-
-	{{rsvpForm}}
-	{{scratch}}
 
 </div>
 </div><!-- dev hider -->

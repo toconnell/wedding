@@ -68,14 +68,12 @@ app.controller('formController', function($scope, $http) {
 
 	$scope.scratch = {
 		currentSheet: 0,
-		sheets: document.getElementsByClassName("rsvp_form_sheet")
+		sheets: document.getElementsByClassName("rsvp_form_sheet"),
+		submitDisabled: false
 	};
 
-	$scope.rsvpForm = {
-		adultsCount: 0,
-		childrenCount: 0,
-		attendeeList: []
-	};
+
+	$scope.guestList = [];
 
 
 	// app methods
@@ -90,6 +88,32 @@ app.controller('formController', function($scope, $http) {
 			};
 		};
 		$scope.scratch.currentSheet = n;
+	};
+
+	$scope.addGuest = function() {
+		var guestId = $scope.guestList.length;
+		var newGuest = {
+			id: guestId,
+			name: null,
+			type: 'adult',
+			meal: 'chicken',
+			email: null
+		};
+		$scope.guestList.push(newGuest);
+	};
+
+	$scope.validateRSVP = function() {
+		// misc. user-proofing on the form
+		$scope.scratch.submitDisabled = false;
+        for (var i = 0; i < $scope.guestList.length; i++) {
+			var guest = $scope.guestList[i];
+			if (guest.type === 'under 12' && guest.meal === 'vegetarian') {
+				guest.meal = null;
+			};
+			if (guest.meal === null) {$scope.scratch.submitDisabled = true};
+			if (guest.name === null) {$scope.scratch.submitDisabled = true};
+			if (guest.name === '') {$scope.scratch.submitDisabled = true};
+        };		
 	};
 
 });
