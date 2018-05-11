@@ -1,7 +1,7 @@
 {
 	"tabs": [
         {   "id": "infoTab",
-            "title": "Information"
+            "title": "Info"
         },
         {
             "id": "venuesTab",
