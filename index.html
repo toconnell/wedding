@@ -8,7 +8,10 @@
 
     <link rel="stylesheet" type="text/css" href="style.css">
 
+	<!-- google fonts ! -->
     <link href="https://fonts.googleapis.com/css?family=Ruda" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+
 
     <!-- body starts -->
     <body ng-app="weddingApp" ng-controller="bodyController">
@@ -40,7 +43,6 @@
             ng-if="scratch.activeTab === tab.id"
 			ng-init="getStub()"
         >
-            <h1>{{tab.title}}</h1>
             <h2>{{tab.subtitle}}</h2>
 			<div ng-include="'html/' + tab.id + '.html'"></div>
         </div>
