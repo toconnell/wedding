@@ -27,7 +27,7 @@ app.controller('bodyController', function($scope, $http) {
 
 
 	//
-	// methods
+	// app methods
 	//
 
     $scope.setActiveTab = function(tabId) {
@@ -45,13 +45,22 @@ app.controller('bodyController', function($scope, $http) {
 		};
 	};
 
+
+	//
+	// misc. helpers / general-use methods
+	//
+
 	$scope.range = function(r) {
 		return Array.apply(null, Array(r)).map(function (_, i) {return i;});
 	};
+
 });
 
 
 app.controller('formController', function($scope, $http) {
+	// this is the RSVP form. it's a multi-step form whose steps are
+	// determined by the 'rsvp_form_sheet' divs in html/RSVPtab.html
+
 
 	//
 	// init
@@ -69,7 +78,7 @@ app.controller('formController', function($scope, $http) {
 	};
 
 
-	// methods
+	// app methods
 	$scope.showSheet = function(n) {
 		for (var i = 0; i < $scope.scratch.sheets.length; i++) {
 		    if (i === n) {

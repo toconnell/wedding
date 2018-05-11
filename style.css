@@ -14,7 +14,7 @@ p {font-size: 0.9em; }
 .title_splash_subtitle {font-size: 2em; color: #fff; text-shadow: 0.01em 0.05em #000; font-weight: bold; text-transform: uppercase; }
 
 .nav_bar {display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-between; background: linear-gradient(to bottom, #fff 91%, #000); }
-.nav_button {font-size: 1.1em; padding: 2%; color: #666; background-color: #ccc; margin: 1%; margin-bottom: 0; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom: 0.2em solid #444; font-family: 'Poiret One'; text-transform: uppercase; }
+.nav_button {font-size: 1.1em; padding: 2%; color: #666; background-color: #ddd; margin: 1%; margin-bottom: 0; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom: 0.2em solid #777; font-family: 'Poiret One'; text-transform: uppercase; }
 .nav_button.active {background-color: #fff; border: 0.2em solid #000; border-bottom: 0; margin-bottom: 0; color: #000; font-weight: bold; margin-bottom: -2px; }
 
 .tab {width: 95%; margin: 0 auto; padding-bottom: 10%; }
@@ -39,7 +39,7 @@ iframe {max-height: 200vh; width: 90%; display: block; margin: 0 auto; }
 
 /* tablet breakpoint */
 @media only screen and (min-width: 700px) and (max-resolution: 3dppx) {
-    html {font-size: 25px; }
+    html {font-size: 30px; }
     .title_splash {height: 30%; }
     .nav_button {margin-bottom: 0.1%; }
 	.nav_button.active {margin-bottom: -1px; }

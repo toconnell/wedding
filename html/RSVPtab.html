@@ -35,13 +35,13 @@
 			Previous
 		</button>
 	    <button
-			ng-if="scratch.currentSheet < 3"
+			ng-if="scratch.currentSheet < scratch.sheets.length - 1"
 			ng-click="showSheet(scratch.currentSheet + 1)"
 		>
 			Next
 		</button>
 	    <button
-			ng-if="scratch.currentSheet === 3"
+			ng-if="scratch.currentSheet === scratch.sheets.length - 1"
 			ng-click="submitSheet"
 		>
 			Submit
