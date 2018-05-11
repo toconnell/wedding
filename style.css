@@ -9,21 +9,29 @@ html, body {height: 100%; }
 .title_splash_title_text {font-size: 2em; color: #fff; text-shadow: 0.01em 0.05em #000;}
 .title_splash_subtitle {font-size: 1.7em; color: #fff; text-shadow: 0.01em 0.05em #000;}
 
-.nav_bar {display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-between; border-bottom: 0.2em solid #000; }
-.nav_button {font-size: 1.1em; padding: 2%; color: #666; background-color: #ccc; margin: 1%; margin-bottom: 0; border-top-left-radius: 10px; border-top-right-radius: 10px; }
-.nav_button.active {background-color: #fff; border: 0.2em solid #000; border-bottom: 0; margin-bottom: -0.9%; color: #000; font-weight: bold; }
+.nav_bar {display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-between; background: linear-gradient(to bottom, #fff 91%, #000); }
+.nav_button {font-size: 1.1em; padding: 2%; color: #666; background-color: #ccc; margin: 1%; margin-bottom: 0; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom: 0.2em solid #444; }
+.nav_button.active {background-color: #fff; border: 0.2em solid #000; border-bottom: 0; margin-bottom: 0; color: #000; font-weight: bold; margin-bottom: -1px; }
 
 .tab {width: 95%; margin: 0 auto; }
 
-.footer {position: absolute; bottom: 1%; left: 1%; right: 1%; display: flex; flex-direction: row; justify-content: space-between; font-size: 0.6em; }
+.footer {position: fixed; bottom: 1%; left: 1%; right: 1%; display: flex; flex-direction: row; justify-content: space-between; font-size: 0.6em; }
 
+.rsvp_form_container {width: 95%; background-color: #eee; min-height: 50%; display: flex; flex-direction: column; flex-wrap: nowrap;  margin: 0 auto;  }
+.rsvp_form_sheet {transition: 1s; }
+.rsvp_form_sheet p {margin: 2%; }
+.rsvp_form_sheet p input {font-size: 1em; }
+.rsvp_form_nav_container {display: flex; flex-direction: row; justify-content: flex-end; padding: 3%; }
+.rsvp_form_nav_container button {font-size: 1em; margin: 1%; }
+.rsvp_form_step_container {width: auto; margin: 0 auto; padding: 3%; }
+.step {  height: 1em;  width: 1em;  margin: 0 0.5em;  background-color: #bbbbbb;  border: none;   border-radius: 50%;  display: inline-block;  opacity: 0.5;}
+.step.active {background-color: #666;}
 
 /* tablet breakpoint */
 @media only screen and (min-width: 700px) and (max-resolution: 3dppx) {
     html {font-size: 20px; }
     .title_splash {height: 30%; }
     .nav_button {margin-bottom: 0.1%; }
-    .nav_button.active {margin-bottom: -0.5%; }
     .footer {font-size: 0.7em; }
 }
 
@@ -34,6 +42,6 @@ html, body {height: 100%; }
 @media only screen and (min-width: 1050px) and (orientation: landscape) {
     html {font-size: 10pt; }
     body {width: 700px; margin: 0 auto;  }
-    .nav_button.active {margin-bottom: -0.4%; }
     .footer {left: 15%; right: 15%; }
+	.nav_button.active {margin-bottom: 0; }
 }

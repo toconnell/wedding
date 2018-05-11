@@ -1,1 +1,63 @@
-<p>RSVP online is coming soon!</p>
+<p ng-click="showHide('devHider')">RSVP online is coming soon!</p>
+
+<div id="devHider" class="hidden">
+<div
+	id="RSVPcontainer"
+	class="rsvp_form_container hidden"
+	ng-controller="formController"
+	ng-init="showSheet(0)"
+>
+
+	<div class="rsvp_form_sheet">
+		<p class="rsvp_question">
+			Number of Adults: <input type="number" ng-model="rsvpForm.adultsCount" required></input>
+		</p>
+		<p class="rsvp_question">
+			Children under 12: <input type="number" ng-model="rsvpForm.childrenCount" required></input>
+		</p>
+	</div>
+	<div class="rsvp_form_sheet">
+		<div class="attendee_form_container" ng-repeat="a in range(rsvpForm.adultsCount)">
+			adult {{a}}|{{$index}}
+		</div>
+	</div>
+	<div class="rsvp_form_sheet">
+		<p class="rsvp_question">
+			sheet 3: confirm and submit
+		</p>
+	</div>
+
+	<div class="rsvp_form_nav_container">
+		<button
+			ng-if="scratch.currentSheet > 0"
+			ng-click="showSheet(scratch.currentSheet - 1)"
+		>
+			Previous
+		</button>
+	    <button
+			ng-if="scratch.currentSheet < 3"
+			ng-click="showSheet(scratch.currentSheet + 1)"
+		>
+			Next
+		</button>
+	    <button
+			ng-if="scratch.currentSheet === 3"
+			ng-click="submitSheet"
+		>
+			Submit
+		</button>
+    </div>
+
+	<div class="rsvp_form_step_container">
+		<span
+			class="step"
+			ng-repeat="sheet in scratch.sheets"
+			ng-class="{active: scratch.currentSheet == $index}"
+		></span>
+	</div>
+
+	{{rsvpForm}}
+	{{scratch}}
+
+</div>
+</div><!-- dev hider -->
