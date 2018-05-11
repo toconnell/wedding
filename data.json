@@ -1,8 +1,7 @@
 {
 	"tabs": [
         {   "id": "infoTab",
-            "title": "Information",
-            "subtitle": "Schedule"
+            "title": "Information"
         },
         {
             "id": "venuesTab",

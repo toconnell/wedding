@@ -27,12 +27,20 @@ html, body {height: 100%; }
 .step {  height: 1em;  width: 1em;  margin: 0 0.5em;  background-color: #bbbbbb;  border: none;   border-radius: 50%;  display: inline-block;  opacity: 0.5;}
 .step.active {background-color: #666;}
 
+
+/* content */
+iframe {max-height: 200vh; width: 90%; display: block; margin: 0 auto; }
+.bottom_spacer {display: block; height: 200px; }
+.std_preview {width: 90%; margin: 0 auto; display: block; }
+
+
 /* tablet breakpoint */
 @media only screen and (min-width: 700px) and (max-resolution: 3dppx) {
     html {font-size: 20px; }
     .title_splash {height: 30%; }
     .nav_button {margin-bottom: 0.1%; }
     .footer {font-size: 0.7em; }
+	.bottom_spacer {height: 100px; }
 }
 
 
@@ -44,4 +52,5 @@ html, body {height: 100%; }
     body {width: 700px; margin: 0 auto;  }
     .footer {left: 15%; right: 15%; }
 	.nav_button.active {margin-bottom: 0; }
+	.bottom_spacer {height: 50px; }
 }
