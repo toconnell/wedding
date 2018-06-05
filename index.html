@@ -2,6 +2,7 @@
 <html lang="en-US">
 	<title>Timothy Joseph O'Connell and Charlotte Yvonne Barnes</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.min.js"></script>
 
     <!-- angularjs app import, followed by JSON imports -->
     <script src="app.js"></script>
@@ -24,6 +25,15 @@
                 August 4, 2018
             </div>
         </div>
+
+		<div id="rsvpSuccessModal" class="hidden clickable modal" ng-click="showHide('rsvpSuccessModal')">
+			<div class="modal_content rsvp_success">
+				<img src="/media/rsvp_success.jpg"/ class="rsvp_success">
+				<h1>Thank You!</h1>
+				<h2>We have your RSVP</h2>
+				<p>Click anywhere to continue.</p>
+			</div>
+		</div>
 
         <div class="nav_bar">
             <div
@@ -56,5 +66,7 @@
                 <div>source code on github</div>
             </a>
         </div>
+
+
     </body>
 </html>

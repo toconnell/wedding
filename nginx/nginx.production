@@ -9,8 +9,20 @@ server {
 	listen	80;
 	server_name	timothyandcharlotte.com;
 
+    access_log  /var/log/nginx/timothyandcharlotte.com.access.log;
+    error_log   /var/log/nginx/timothyandcharlotte.com.error.log;
+
 	location / {
 		root	/home/toconnell/timothyandcharlotte_com/wedding;
 		index	index.html;
 	}
+
+	# apt-get install fcgiwrap
+    location ~ (\.cgi|\.py)$ {
+    	gzip off;
+     	root			/home/toconnell/timothyandcharlotte_com/wedding;
+     	fastcgi_pass  	unix:/var/run/fcgiwrap.socket;
+     	include 		/etc/nginx/fastcgi_params;
+     	fastcgi_param 	SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+   }
 }

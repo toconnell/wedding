@@ -4,11 +4,28 @@ html, body {height: 100%; }
 li {margin: 3%; margin-left: auto;}
 p {font-size: 0.9em; }
 
+
+/* ui/ux junk drawer */
 .clickable {cursor: pointer; }
 .hidden {display: none;}
 .visible {display: initial;}
+.center {text-align: center; }
 
 
+/* angularjs animations */
+.ng_fade.ng-enter,
+    .ng_fade_in.ng-enter {transition: 0.5s linear all; opacity:0;}
+.ng_fade.ng-enter.ng-enter-active,
+    .ng_fade_in.ng-enter-active { opacity:1;}
+.ng_fade.ng-leave {transition: 0.5s linear all;  opacity:1;}
+.ng_fade.ng-leave.ng-leave-active {opacity:0;}
+
+
+/* 
+
+	mobile styles start here!
+
+*/
 .title_splash {display: flex; flex-direction: column; align-items: center; height: 25%; justify-content: center; background-repeat: no-repeat; background-size: 100%;  font-family: 'Poiret One'; position: relative; }
 .title_splash::after {  content: "";  background: url('/media/title_splash.jpg');  opacity: 0.5;  top: 0;  left: 0;  bottom: 0;  right: 0;  position: absolute;  z-index: -1; 	background-repeat: no-repeat; 	background-size: 100%; }
 .title_splash_title_text {font-size: 2.5em; color: #fff; text-shadow: 0.01em 0.05em #000; font-weight: bold; text-transform: uppercase; }
@@ -37,6 +54,7 @@ p {font-size: 0.9em; }
 .step {  height: 1em;  width: 1em;  margin: 0 0.5em;  background-color: #ccc;  border: none;   border-radius: 50%;  display: inline-block;  opacity: 0.5;}
 .step.active {background-color: #000;}
 
+.rm_guest {position: absolute; right: 5%; border-radius: 10px; border: 0.1em solid #ccc; background-color: #ddd; color: #bbb; background: radial-gradient(#fff, #ddd); padding: 1%; padding-left: 2%; padding-right: 2%; }
 .rsvp_guest_name,
 	.rsvp_guest_email {font-size: 1.5em; text-align: center; width: 90%; border: 0; text-align: left; padding: 1%; padding-left: 3%; margin: 2%; font-family: 'Poiret One'; }
 
@@ -44,26 +62,42 @@ p {font-size: 0.9em; }
 .guest_list_review {width: 95%; background-color: #fff; border-radius: 5px; border: 1px solid #ccc; margin: 0 auto; border-collapse: collapse;}
 .guest_list_review th {border-bottom: 1px solid #333; padding: 1%; }
 .guest_list_review td {border-left: 1px solid #999; padding: 1%; text-transform: capitalize;}
-.rsvp_error {background-color: #FF9999; padding: 1%; border: 1px solid #fff;}
+.rsvp_error {background-color: #FF9999; padding: 1%; border: 1px solid #fff; font-size: 1em; }
 .rsvp_submit {font-weight: bold; }
+
+/* I hate modals! */
+
+.modal {z-index: 100; background-color: #000; background: rgba(0,0,0,0.7); position: fixed; top: 0; left: 0; right: 0; bottom: 0; transition: 0.5s; }
+.modal_content {margin: 0 auto; margin-top: 5%; width: 85%; height: 90%; background-color: #fff; border: 0.2em solid #000; border-radius: 1px; padding: 2%; }
+.modal_content.rsvp_success {display: flex; flex-direction: column; justify-content: center; align-items: center; }
+img.rsvp_success {width: 90%; border: 0.2em solid #01BAB4; border-right-color: #05A49F; border-bottom-color: #05A49F; }
 
 /* content */
 iframe {max-height: 200vh; width: 90%; display: block; margin: 0 auto; }
 .std_preview {width: 90%; margin: 0 auto; display: block; }
 
 
-/* tablet breakpoint */
+/* 
+
+	tablet breakpoint 
+
+*/
 @media only screen and (min-width: 700px) and (max-resolution: 3dppx) {
     html {font-size: 30px; }
     .title_splash {height: 30%; }
     .nav_button {margin-bottom: 0.1%; }
 	.nav_button.active {margin-bottom: -1px; }
     .footer {font-size: 0.5em; }
+	img.rsvp_success {width: 50%; }
 }
 
 
 
-/* wide res desktop breakpoint */
+/* 
+
+	wide res desktop breakpoint 
+
+*/
 
 @media only screen and (min-width: 1050px) and (orientation: landscape) {
     html {font-size: 11pt; }
@@ -71,6 +105,8 @@ iframe {max-height: 200vh; width: 90%; display: block; margin: 0 auto; }
     .footer {padding: 0.5%; padding-left: 25%; padding-right: 25%; font-size: 0.7em; }
 	.nav_button.active {margin-bottom: 0; }
 	.bottom_spacer {height: 50px; }
+	img.rsvp_success {width: 25%; }
+	.modal_content {margin-top: 2%; height: 87%;}
 }
 
 

@@ -10,7 +10,7 @@
 
 	<div class="rsvp_form_sheet">
 		<h2>Guests</h2>
-		<div class="rsvp_guest" ng-repeat="guest in guestList">
+		<div class="rsvp_guest ng_fade" ng-repeat="guest in guestList">
 			<p class="rsvp_question"><input class="rsvp_guest_name" ng-model="guest.name" placeholder="Guest Name" required/></p>
 
 			<p class="rsvp_question" ng-init="typeOptions = ['adult','under 12']">
@@ -26,11 +26,19 @@
 						for="guest_{{guest.id}}_type_{{option}}"
 						class="clickable"
 						ng-class="{gradient_gold: guest.type === option}"
+						ng-click="guest.meal = 'chicken'"
 					>
 						{{option}}
 					</label>
 				</span>
 			</p>
+			<div 
+				class="clickable rm_guest"
+				ng-click="rmGuest($index)"
+				ng-if="guest.name == undefined"
+			>
+				x
+			</div>
 			<p class="rsvp_question" ng-init="mealOptions = ['chicken','beef','vegetarian']">
 				<span ng-repeat="option in mealOptions">
 					<input
@@ -44,7 +52,7 @@
 						for="guest_{{guest.id}}_meal_{{option}}"
 						class="clickable"
 						ng-class="{
-							hidden: option == 'vegetarian' && guest.type == 'under 12',
+							hidden: option != 'chicken' && guest.type == 'under 12',
 							gradient_gold: guest.meal === option
 						}"
 					>
@@ -53,6 +61,10 @@
 				</span>
 			</p>
 		</div>
+		<h2 ng-if="guestList.length > 0">Confirmation Email (optional)</h2>
+		<p class="rsvp_question center" ng-if="guestList.length > 0">
+			<input class="rsvp_guest_email" type="email" ng-model="scratch.confirmationEmail" placeholder="email" />
+		</p>
 	</div>
 
 
@@ -69,9 +81,11 @@
 		<p class="rsvp_error" ng-if="scratch.submitDisabled">
 			Please return to the previous sheet and complete all fields before submitting your RSVP!
 		</p>
-		<p class="rsvp_question" ng-if="scratch.submitDisabled === false">
-			(Optional) Send a confirmation email to this address:
-			<input class="rsvp_guest_email" type="email" ng-model="scratch.confirmationEmail" placeholder="email" />
+		<p class="rsvp_question center" ng-if="scratch.confirmationEmail == undefined">
+			No confirmation email requested.
+		</p>
+		<p class="rsvp_question center" ng-if="scratch.confirmationEmail != undefined">
+			Send a confirmation email to <b>{{scratch.confirmationEmail}}</b>.
 		</p>
 	</div>
 
@@ -81,28 +95,28 @@
 		<button
 			ng-if="scratch.currentSheet === 0"
 			ng-click="addGuest()"
-			class="rsvp_form_nav"
+			class="clickable rsvp_form_nav"
 		>
 			+ Add Guest
 		</button>
 	    <button
 			ng-if="scratch.currentSheet < scratch.sheets.length - 1 && guestList.length > 0"
 			ng-click="showSheet(scratch.currentSheet + 1); validateRSVP()"
-			class="rsvp_form_nav"
+			class="clickable rsvp_form_nav"
 		>
 			Next
 		</button>
 		<button
 			ng-if="scratch.currentSheet > 0"
 			ng-click="showSheet(scratch.currentSheet - 1)"
-			class="rsvp_form_nav"
+			class="clickable rsvp_form_nav"
 		>
 			Previous
 		</button>
 	    <button
 			ng-if="scratch.currentSheet === scratch.sheets.length - 1 && scratch.submitDisabled === false"
-			ng-click="submitSheet"
-			class="rsvp_submit rsvp_form_nav gradient_gold"
+			ng-click="submitSheet()"
+			class="clickable rsvp_submit rsvp_form_nav gradient_gold"
 		>
 			Submit
 		</button>

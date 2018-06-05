@@ -1,4 +1,4 @@
-var app = angular.module('weddingApp', []);
+var app = angular.module('weddingApp', ['ngAnimate']);
 
 app.filter('trustedHTML',
    function($sce) {
@@ -97,9 +97,12 @@ app.controller('formController', function($scope, $http) {
 			name: null,
 			type: 'adult',
 			meal: 'chicken',
-			email: null
 		};
 		$scope.guestList.push(newGuest);
+	};
+
+	$scope.rmGuest = function(guestIndex) {
+		$scope.guestList.splice(guestIndex,1);
 	};
 
 	$scope.validateRSVP = function() {
@@ -114,6 +117,32 @@ app.controller('formController', function($scope, $http) {
 			if (guest.name === null) {$scope.scratch.submitDisabled = true};
 			if (guest.name === '') {$scope.scratch.submitDisabled = true};
         };		
+	};
+
+	$scope.submitSheet = function() {
+		var postObj = {}
+		postObj['meta'] = {
+			'confirmation_email': $scope.scratch.confirmationEmail,
+			'user_agent': navigator.userAgent
+		};
+		postObj['guests'] = $scope.guestList;
+
+	    $http.post('/mail.py', postObj).then(
+    	    function(payload) {
+	            //console.info(payload.data);
+				$scope.setActiveTab('infoTab');
+				$scope.showHide('rsvpSuccessModal');
+				for (var i = 0; i < $scope.tabs.length; i++) {
+		            if ($scope.tabs[i]['id'] === 'RSVPtab') {
+						$scope.tabs.splice(i,1);
+					}
+				}; 
+        	},
+    	    function(errorPayload) {
+	            console.error("Could not submit guest list!" + errorPayload);
+        	}
+    	);
+
 	};
 
 });
