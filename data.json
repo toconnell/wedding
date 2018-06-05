@@ -5,15 +5,18 @@
         },
         {
             "id": "venuesTab",
-            "title": "Maps"
+            "title": "Maps",
+			"showBanner": true
         },
         {
             "id": "hotelsTab",
-            "title": "Hotels"
+            "title": "Hotels",
+			"showBanner": true
         },
         {
             "id": "registryTab",
-            "title": "Registry"
+            "title": "Registry",
+			"showBanner": true
         },
         {
             "id": "RSVPtab",

@@ -7,6 +7,7 @@ server {
 
 server {
 	listen	80;
+	listen	443;
 	server_name	timothyandcharlotte.com;
 
     access_log  /var/log/nginx/timothyandcharlotte.com.access.log;
@@ -25,4 +26,12 @@ server {
      	include 		/etc/nginx/fastcgi_params;
      	fastcgi_param 	SCRIPT_FILENAME  $document_root$fastcgi_script_name;
    }
+
+	ssl_certificate /etc/letsencrypt/live/timothyandcharlotte.com/fullchain.pem; # managed by Certbot
+	ssl_certificate_key /etc/letsencrypt/live/timothyandcharlotte.com/privkey.pem; # managed by Certbot
+
+    if ($scheme != "https") {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
 }

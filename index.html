@@ -47,13 +47,15 @@
         </div>
 
         <div
-            id="infoTab"
-            class="tab"
+            class="tab ng_fade"
             ng-repeat="tab in tabs"
             ng-if="scratch.activeTab === tab.id"
 			ng-init="getStub()"
         >
             <h2>{{tab.subtitle}}</h2>
+			<div class="logo_banner" ng-if="tab.showBanner">
+			    <img src="/media/banner.png" />
+			</div>
 			<div ng-include="'html/' + tab.id + '.html'"></div>
         </div>
 
